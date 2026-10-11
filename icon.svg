@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img"
+     aria-label="Elementos de Álgebra Lineal">
+  <title>Elementos de Álgebra Lineal</title>
+
+  <!-- Baldosa terracota: el mismo --accent del sitio (#8c5a2b). -->
+  <rect width="64" height="64" rx="14" fill="#8c5a2b"/>
+
+  <!-- Ejes, apenas insinuados: a 16px no deben competir con el vector. -->
+  <g stroke="#ffffff" stroke-opacity=".36" stroke-width="2.6" stroke-linecap="round">
+    <path d="M16 48H52"/>
+    <path d="M16 48V13"/>
+  </g>
+
+  <!-- El vector: lo unico que tiene que leerse a 16px. -->
+  <path d="M16 48L36 29" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+  <path d="M49 17L43.8 34.8L30.8 21Z" fill="#ffffff"/>
+  <circle cx="16" cy="48" r="3.6" fill="#ffffff"/>
+</svg>

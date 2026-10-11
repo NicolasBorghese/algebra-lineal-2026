@@ -13,6 +13,11 @@ Abrir `index.html` en el navegador. Nada más: no hay que instalar ni compilar.
 > hace falta internet**. Después queda en caché del navegador. Sin conexión el sitio
 > funciona igual, pero las fórmulas se ven como texto LaTeX crudo.
 
+El `<head>` lleva `robots: noindex` — el sitio se comparte por link y no aparece en
+buscadores. No es una restricción de acceso: cualquiera con el link entra igual.
+Las etiquetas OpenGraph apuntan a URL **absolutas** de GitHub Pages; si el sitio se
+muda de dirección hay que actualizarlas a mano (`og:url` y `og:image`).
+
 Atajos: `/` enfoca el buscador; el botón de la derecha alterna tema claro/oscuro.
 El botón «Marcar» de cada ítem guarda tu avance en `localStorage` de este navegador.
 
@@ -20,6 +25,9 @@ El botón «Marcar» de cada ítem guarda tu avance en `localStorage` de este na
 
 ```
 index.html                     carga todo en orden y define el layout
+favicon.ico, icon.svg          icono de pestaña (un vector con sus ejes)
+assets/apple-touch-icon.png    icono al agregar el sitio a la pantalla de inicio
+assets/og.png                  vista previa de 1200×630 al compartir el link
 assets/css/styles.css          tema, tipografía, componentes
 assets/js/core.js              registro de contenido (se carga ANTES del contenido)
 assets/js/app.js               router por hash, render, búsqueda, popovers, progreso
