@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Elementos de Álgebra Lineal</title>
+<meta name="description" content="Guía de estudio ordenada de Elementos de Álgebra Lineal — UNCo, FaEA/FI.">
+
+<!-- Fuera de los buscadores: el sitio se comparte por link, no se publica.
+     No es una restricción de acceso, solo evita que se indexe. -->
+<meta name="robots" content="noindex">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#contenido">Ir al contenido</a>
+
+<header class="topbar">
+  <button class="iconbtn navtoggle" id="navtoggle" aria-label="Abrir navegación" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+
+  <a class="brand" href="#/">
+    <span class="brand-mark" aria-hidden="true">EAL</span>
+    <span class="brand-text">
+      <strong>Elementos de Álgebra Lineal</strong>
+      <small>UNCo · FaEA / FI · guía de estudio</small>
+    </span>
+  </a>
+
+  <div class="search">
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="search-ico"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="search" type="search" placeholder="Buscar concepto, teorema, ejercicio…" autocomplete="off"
+           aria-label="Buscar en todo el material">
+    <kbd>/</kbd>
+    <div class="results" id="results" role="listbox" hidden></div>
+  </div>
+
+  <button class="iconbtn" id="theme" aria-label="Cambiar tema">
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="ico-sun"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.2 5.2l1.6 1.6M17.2 17.2l1.6 1.6M18.8 5.2l-1.6 1.6M6.8 17.2l-1.6 1.6"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="ico-moon"><path d="M20 14.5A8 8 0 019.5 4a8.2 8.2 0 1010.5 10.5z"/></svg>
+  </button>
+</header>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar">
+    <nav id="nav" aria-label="Secciones"></nav>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <main id="contenido" tabindex="-1"></main>
+</div>
+
+<div class="pop" id="pop" hidden></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="assets/js/core.js"></script>
+
+<!-- Teoría -->
+<script src="contenido/teoria/u1-vectores.js"></script>
+<script src="contenido/teoria/u2-rectas-plano.js"></script>
+<script src="contenido/teoria/u3-rectas-planos-espacio.js"></script>
+<script src="contenido/teoria/u4-espacios-vectoriales.js"></script>
+<script src="contenido/teoria/u5-cambio-de-base.js"></script>
+<script src="contenido/teoria/u6-transformaciones-lineales.js"></script>
+<script src="contenido/teoria/u7-autovalores.js"></script>
+
+<!-- Práctica -->
+<script src="contenido/practica/tp1.js"></script>
+<script src="contenido/practica/tp2.js"></script>
+<script src="contenido/practica/tp3.js"></script>
+<script src="contenido/practica/tp4.js"></script>
+<script src="contenido/practica/tp5.js"></script>
+<script src="contenido/practica/tp6.js"></script>
+<script src="contenido/practica/tp7.js"></script>
+
+<!-- Exámenes -->
+<script src="contenido/examenes/parciales.js"></script>
+<script src="contenido/examenes/finales.js"></script>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
