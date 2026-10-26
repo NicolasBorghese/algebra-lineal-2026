@@ -320,6 +320,34 @@ strong{ font-weight:640; }
 .note b.lbl{ display:block; font-size:11px; letter-spacing:.07em;
   text-transform:uppercase; margin-bottom:3px; opacity:.8; }
 
+/* figura SVG dentro de una resolución; los colores salen de las variables
+   del tema, así que el mismo dibujo sirve en claro y oscuro */
+.fig{
+  background:var(--surface-2); border:1px solid var(--line-soft);
+  border-radius:var(--radius-s); padding:12px 14px 10px; margin:0 0 13px;
+}
+.fig svg{ display:block; width:100%; max-width:560px; height:auto; margin:0 auto; }
+.fig figcaption{ font-size:13.5px; color:var(--ink-2); margin-top:8px; }
+.fig text{ font-family:var(--serif); font-style:italic; font-size:17px; fill:var(--ink); }
+.fig text.sm{ font-size:13px; font-style:normal; font-family:var(--sans); fill:var(--ink-3); }
+.fig .edge{ stroke:var(--ink-3); stroke-width:1.2; fill:none; }
+.fig .hid { stroke:var(--ink-3); stroke-width:1; fill:none; stroke-dasharray:4 4; opacity:.7; }
+.fig .base{ fill:var(--accent-soft); stroke:none; }
+.fig .tapa{ fill:var(--accent-soft); stroke:none; opacity:.45; }
+.fig .faded{ opacity:.45; }
+.fig .c-teo { stroke:var(--teo);  fill:var(--teo); }
+.fig .c-ink { stroke:var(--ink);  fill:var(--ink); }
+.fig .c-def { stroke:var(--def);  fill:var(--def); }
+.fig .c-prop{ stroke:var(--prop); fill:var(--prop); }
+.fig .c-form{ stroke:var(--form); fill:var(--form); }
+.fig .c-obs { stroke:var(--obs);  fill:var(--obs); }
+.fig line[class^="c-"], .fig path.vec{ stroke-width:2.2; fill:none; }
+.fig .dash{ stroke-dasharray:6 4; }
+.fig text.c-teo{ fill:var(--teo); } .fig text.c-def{ fill:var(--def); }
+.fig text.c-prop{ fill:var(--prop); } .fig text.c-form{ fill:var(--form); }
+.fig text.c-obs{ fill:var(--obs); }
+.fig text[class^="c-"]{ stroke:none; }
+
 /* ---------- chips de concepto (links teoría ↔ práctica) ---------- */
 .chips{ display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px; }
 .chip{

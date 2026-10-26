@@ -462,11 +462,81 @@ EAL.tp({
         conceptos: ['u1-volumen', 'u1-proyeccion-ortogonal'],
         pista: tex`La altura se mide perpendicularmente a la base. ¿Cuál de las tres aristas no está en la base?`,
         resolucion: tex`<p><strong>El vector que determina la altura es $w$</strong>, porque es la única arista que no está contenida en la base (la base la forman $u$ y $v$, por dato).</p>
-        <p>Más precisamente, la altura es la <strong>componente de $w$ perpendicular a la base</strong>, es decir la proyección de $w$ sobre la normal $u \times v$ ([[u1-proyeccion-ortogonal]]):</p>
-        <div class="fx center">$$\vec h = \operatorname{proy}_{u\times v}\, w = \frac{w \cdot (u \times v)}{\|u \times v\|^2}\,(u\times v) = \frac{20}{30}(1,2,5) = \frac{2}{3}(1,2,5) = \left(\tfrac{2}{3}, \tfrac{4}{3}, \tfrac{10}{3}\right)$$</div>
-        <p>donde $\|u\times v\|^2 = 1 + 4 + 25 = 30$. Su longitud es la altura buscada:</p>
-        <div class="fx center">$$h = \|\vec h\| = \frac{|w \cdot (u\times v)|}{\|u \times v\|} = \frac{20}{\sqrt{30}} = \frac{20\sqrt{30}}{30} = \frac{2\sqrt{30}}{3} \approx 3{,}65$$</div>
-        <div class="note tip"><b class="lbl">Control cruzado</b> Tiene que valer $V = A_{\text{base}} \cdot h$: en efecto, $\sqrt{30} \cdot \dfrac{2\sqrt{30}}{3} = \dfrac{2 \cdot 30}{3} = 20 = V$. ✓</div>`,
+        <p><strong>La idea geométrica.</strong> Se apoya el paralelepípedo sobre la base (el paralelogramo de lados $u$ y $v$, que está en un plano). La altura es la distancia desde la «tapa» hasta ese plano, medida <strong>en la dirección perpendicular al plano</strong>. La arista $w$ sube desde la base hasta la tapa, pero en general va inclinada: tiene una parte que «avanza» paralela a la base y otra parte que «sube» perpendicular a ella. La altura es sólo la parte que sube:</p>
+        <div class="fx center">$$w = \underbrace{w_{\parallel}}_{\text{en el plano de la base}} + \underbrace{\vec h}_{\perp \text{ a la base}}$$</div>
+        <p>Para quedarse con la parte perpendicular hace falta una dirección perpendicular al <em>plano entero</em> (no sólo a una arista), y eso es justamente lo que da el [[u1-producto-vectorial]]: $u \times v$ es perpendicular a $u$ y a $v$ a la vez.</p>
+        <figure class="fig">
+        <svg viewBox="0 0 560 380" role="img" aria-label="Paralelepípedo con base u, v; la arista w se descompone en w paralelo a la base y el vector altura h, vertical">
+          <polygon class="base" points="40,340 212.5,340 333.8,262.7 161.3,262.7"/>
+          <polygon class="tapa" points="195.4,124.4 367.9,124.4 489.2,47.1 316.8,47.1"/>
+          <line class="hid" x1="40" y1="340" x2="161.3" y2="262.7"/>
+          <line class="hid" x1="161.3" y1="262.7" x2="333.8" y2="262.7"/>
+          <line class="hid" x1="161.3" y1="262.7" x2="316.8" y2="47.1"/>
+          <line class="edge" x1="212.5" y1="340" x2="333.8" y2="262.7"/>
+          <line class="edge" x1="212.5" y1="340" x2="367.9" y2="124.4"/>
+          <line class="edge" x1="333.8" y1="262.7" x2="489.2" y2="47.1"/>
+          <line class="edge" x1="195.4" y1="124.4" x2="367.9" y2="124.4"/>
+          <line class="edge" x1="367.9" y1="124.4" x2="489.2" y2="47.1"/>
+          <line class="edge" x1="489.2" y1="47.1" x2="316.8" y2="47.1"/>
+          <line class="edge" x1="316.8" y1="47.1" x2="195.4" y2="124.4"/>
+          <line class="c-prop dash" x1="40" y1="340" x2="186.5" y2="315.7"/><polygon class="c-prop" points="195.4,314.2 185.3,320.4 183.8,311.6"/>
+          <line class="c-teo" x1="40" y1="340" x2="203.5" y2="340.0"/><polygon class="c-teo" points="212.5,340 201.5,344.5 201.5,335.5"/>
+          <line class="c-teo" x1="40" y1="340" x2="153.7" y2="267.5"/><polygon class="c-teo" points="161.3,262.7 154.4,272.4 149.6,264.8"/>
+          <line class="c-ink" x1="40" y1="340" x2="190.1" y2="131.7"/><polygon class="c-ink" points="195.4,124.4 192.6,136.0 185.3,130.7"/>
+          <line class="c-def" x1="195.4" y1="314.2" x2="195.4" y2="133.4"/><polygon class="c-def" points="195.4,124.4 199.9,135.4 190.9,135.4"/>
+          <path class="edge" d="M195.4,305.2 L204.3,303.7 L204.3,312.7"/>
+          <text class="c-teo" x="120" y="362">u</text>
+          <text class="c-teo" x="170" y="256">v</text>
+          <text x="96" y="226">w</text>
+          <text class="c-def" x="204" y="226">h</text>
+          <text class="c-prop" x="112" y="316">w<tspan font-size="13" dy="4">∥</tspan></text>
+          <text class="sm" x="24" y="356">O</text>
+        </svg>
+        <figcaption>La base (sombreada) es el paralelogramo de $u$ y $v$. La arista $w$ sube inclinada: se descompone en $w_{parallel}$, que corre dentro de la base, y $ec h$, que es perpendicular a ella. La <strong>altura</strong> es la longitud de $ec h$. Dibujo a escala, con la base apoyada horizontal.</figcaption>
+        </figure>
+        <ol class="pasos">
+          <li><span class="ptit">Normal a la base</span> (del inciso a): $u \times v = (1,2,5)$. Control: $(1,2,5)\cdot(1,-3,1) = 1-6+5 = 0$ y $(1,2,5)\cdot(2,-1,0) = 2-2+0 = 0$ ✓, es perpendicular a las dos.</li>
+          <li><span class="ptit">Vector altura</span> = proyección de $w$ sobre la normal ([[u1-proyeccion-ortogonal]]):
+            $$\vec h = \operatorname{proy}_{u\times v}\, w = \frac{w \cdot (u \times v)}{\|u \times v\|^2}\,(u\times v) = \frac{20}{30}(1,2,5) = \frac{2}{3}(1,2,5) = \left(\tfrac{2}{3}, \tfrac{4}{3}, \tfrac{10}{3}\right)$$
+            donde $w\cdot(u\times v) = 20$ es el producto mixto del inciso a) y $\|u\times v\|^2 = 1 + 4 + 25 = 30$.</li>
+          <li><span class="ptit">Altura</span> = longitud de ese vector:
+            $$h = \|\vec h\| = \frac{|w \cdot (u\times v)|}{\|u \times v\|} = \frac{20}{\sqrt{30}} = \frac{20\sqrt{30}}{30} = \frac{2\sqrt{30}}{3} \approx 3{,}65$$</li>
+        </ol>
+        <p>Lo que sobra, $w_{\parallel} = w - \vec h = (2,-1,4) - \left(\tfrac{2}{3}, \tfrac{4}{3}, \tfrac{10}{3}\right) = \left(\tfrac{4}{3}, -\tfrac{7}{3}, \tfrac{2}{3}\right)$, es la «sombra» de $w$ sobre la base: el punto del plano de la base que queda justo debajo de la punta de $w$. Se puede comprobar que está en el plano: $w_{\parallel} \cdot (1,2,5) = \tfrac{4}{3} - \tfrac{14}{3} + \tfrac{10}{3} = 0$ ✓.</p>
+        <div class="note warn"><b class="lbl">Error típico: proyectar sobre una arista de la base</b>
+        Calcular $\operatorname{proy}_u w = \tfrac{9}{11}(1,-3,1)$ y restarlo, $d = w - \operatorname{proy}_u w = \left(\tfrac{13}{11}, \tfrac{16}{11}, \tfrac{35}{11}\right)$, da un vector perpendicular <strong>a $u$</strong>, pero no a la base: $d \cdot v = \tfrac{26 - 16 + 0}{11} = \tfrac{10}{11} \neq 0$. Su módulo, $\|d\| = \tfrac{\sqrt{1650}}{11} \approx 3{,}69$, es la distancia de la punta de $w$ a la <em>recta</em> de la arista $u$, no al <em>plano</em> de la base. Por eso da parecido pero más grande: $d$ todavía conserva un pedacito que corre paralelo a la base (en la dirección de $v$ que es perpendicular a $u$), y $\|d\|^2 = h^2 + \tfrac{10}{33} = \tfrac{40}{3} + \tfrac{10}{33} = \tfrac{150}{11}$. Además, $\operatorname{proy}_u w$ no es el «centro» de la base: es un punto sobre la arista $u$.
+        
+        <figure class="fig" style="margin-top:10px">
+        <svg viewBox="0 0 560 380" role="img" aria-label="El vector d, que va de la proyección de w sobre u hasta la punta de w, no es vertical: queda inclinado respecto de la altura h">
+          <g class="faded"><polygon class="base" points="40,340 212.5,340 333.8,262.7 161.3,262.7"/>
+          <polygon class="tapa" points="195.4,124.4 367.9,124.4 489.2,47.1 316.8,47.1"/>
+          <line class="hid" x1="40" y1="340" x2="161.3" y2="262.7"/>
+          <line class="hid" x1="161.3" y1="262.7" x2="333.8" y2="262.7"/>
+          <line class="hid" x1="161.3" y1="262.7" x2="316.8" y2="47.1"/>
+          <line class="edge" x1="212.5" y1="340" x2="333.8" y2="262.7"/>
+          <line class="edge" x1="212.5" y1="340" x2="367.9" y2="124.4"/>
+          <line class="edge" x1="333.8" y1="262.7" x2="489.2" y2="47.1"/>
+          <line class="edge" x1="195.4" y1="124.4" x2="367.9" y2="124.4"/>
+          <line class="edge" x1="367.9" y1="124.4" x2="489.2" y2="47.1"/>
+          <line class="edge" x1="489.2" y1="47.1" x2="316.8" y2="47.1"/>
+          <line class="edge" x1="316.8" y1="47.1" x2="195.4" y2="124.4"/>
+          <line class="c-teo" x1="40" y1="340" x2="153.7" y2="267.5"/><polygon class="c-teo" points="161.3,262.7 154.4,272.4 149.6,264.8"/>
+          <line class="c-ink" x1="40" y1="340" x2="190.1" y2="131.7"/><polygon class="c-ink" points="195.4,124.4 192.6,136.0 185.3,130.7"/></g>
+          <line class="c-obs" x1="40" y1="340" x2="172.1" y2="340.0"/><polygon class="c-obs" points="181.1,340 170.1,344.5 170.1,335.5"/>
+          <line class="c-teo" x1="181.1" y1="340" x2="212.5" y2="340"/>
+          <line class="c-form" x1="181.1" y1="340" x2="195.4" y2="314.2"/>
+          <line class="c-form dash" x1="181.1" y1="340" x2="194.8" y2="133.4"/><polygon class="c-form" points="195.4,124.4 199.2,135.7 190.2,135.1"/>
+          <line class="c-def" x1="195.4" y1="314.2" x2="195.4" y2="133.4"/><polygon class="c-def" points="195.4,124.4 199.9,135.4 190.9,135.4"/>
+          <path class="edge" d="M195.4,305.2 L204.3,303.7 L204.3,312.7"/>
+          <text class="c-obs" x="64" y="364">proy<tspan font-size="12" dy="4">u</tspan><tspan dy="-4"> w</tspan></text>
+          <text class="c-form" x="160" y="232">d</text>
+          <text class="c-def" x="204" y="232">h</text>
+          <text class="sm" x="24" y="356">O</text>
+        </svg>
+        <figcaption>Restar $operatorname{proy}_u w$ deja el vector $d$ (rojo, punteado), que sale de un punto de la arista $u$ y llega a la punta de $w$. No es vertical: además de subir, avanza un poco dentro de la base (el tramo rojo corto, de longitud $sqrt{10/33} approx 0{,}55$). La altura es $ec h$ (verde), y por eso $|d| &gt; h$.</figcaption>
+        </figure>
+        <br>Ese camino sólo funciona si la base es un <strong>rectángulo</strong> ($u \perp v$): ahí basta restar las proyecciones sobre $u$ y sobre $v$. Como acá $u\cdot v = 2+3+0 = 5 \neq 0$, habría que restar primero la proyección sobre $u$ y después la proyección sobre la dirección de la base perpendicular a $u$, $e = v - \operatorname{proy}_u v = \tfrac{1}{11}(17,4,-5)$: $\;d - \operatorname{proy}_e w = \left(\tfrac{2}{3}, \tfrac{4}{3}, \tfrac{10}{3}\right) = \vec h$, el mismo resultado. Con $u\times v$ se hace todo eso de una sola vez.</div>
+        <div class="note tip"><b class="lbl">Control cruzado</b> Tiene que valer $V = A_{\text{base}} \cdot h$: en efecto, $\sqrt{30} \cdot \dfrac{2\sqrt{30}}{3} = \dfrac{2 \cdot 30}{3} = 20 = V$. ✓ (Con $\|d\|\approx 3{,}69$ daría $\approx 20{,}2 \neq 20$, otra forma de detectar el error.)</div>`,
         resultado: tex`La altura la determina $w$. Vector altura $\vec h = \frac{2}{3}(1,2,5)$; $\;h = \frac{20}{\sqrt{30}} = \frac{2\sqrt{30}}{3} \approx 3{,}65$.` },
 
       { id: 'tp1-14c', rot: 'c', enunciado: tex`Hallar el área de la base.`,
