@@ -16,32 +16,39 @@ EAL.unidad({
     { id: 'u2-vectorial', tipo: 'def', titulo: 'Ecuación vectorial',
       cuerpo: tex`<p>Sea $L$ la recta que pasa por el punto $P_0 = (x_0, y_0)$ y tiene la dirección del vector $\vec u = (u_1, u_2) \neq \vec 0$. Si $P = (x,y)$ es un punto cualquiera de $L$, el vector $\overrightarrow{P_0P}$ es paralelo a $\vec u$, así que $\overrightarrow{P_0P} = \lambda \vec u$ (por [[u1-teorema-1]]). Como $P = P_0 + \overrightarrow{P_0P}$:</p>
       <div class="fx center">$$L: \;(x, y) = (x_0, y_0) + \lambda\,(u_1, u_2), \qquad \lambda \in \mathbb{R}$$</div>
-      <p>$\vec u$ se llama <strong>vector director</strong> de $L$. No es único: cualquier $\alpha \vec u$ con $\alpha \neq 0$ sirve igual.</p>` },
+      <p>$\vec u$ se llama <strong>vector director</strong> de $L$. No es único: cualquier $\alpha \vec u$ con $\alpha \neq 0$ sirve igual.</p>
+      <p>La letra $\lambda$ es <strong>lambda</strong> (no delta) y se llama <strong>parámetro</strong>: es un número real libre que cuenta cuántas veces se camina $\vec u$ desde $P_0$. Cada valor de $\lambda$ da un punto de la recta; $\lambda = 0$ da $P_0$, y los negativos van en sentido contrario a $\vec u$.</p>
+      <div class="note tip"><b class="lbl">Ejemplo</b> La recta por $P_0 = (2,-1)$ con director $\vec u = (3,2)$ es $(x,y) = (2,-1) + \lambda\,(3,2)$. Con $\lambda = 1$ se llega a $(5, 1)$; con $\lambda = -1$, a $(-1,-3)$. Este mismo ejemplo sigue en las formas de abajo.</div>` },
 
     { id: 'u2-parametrica', tipo: 'def', titulo: 'Ecuaciones paramétricas',
       cuerpo: tex`<p>Escribiendo la [[u2-vectorial|ecuación vectorial]] componente por componente:</p>
       <div class="fx center">$$L: \begin{cases} x = x_0 + \lambda\, u_1 \\ y = y_0 + \lambda\, u_2 \end{cases} \qquad \lambda \in \mathbb{R}$$</div>
-      <p>Dándole valores a $\lambda$ se obtienen puntos de la recta. $\lambda = 0$ devuelve $P_0$.</p>` },
+      <p>Dándole valores a $\lambda$ se obtienen puntos de la recta. $\lambda = 0$ devuelve $P_0$.</p>
+      <div class="note tip"><b class="lbl">Ejemplo</b> $(x,y) = (2,-1) + \lambda(3,2) = (2 + 3\lambda,\; -1 + 2\lambda)$, así que $\;x = 2 + 3\lambda$, $\;y = -1 + 2\lambda$. Se reconocen por ser <strong>dos</strong> ecuaciones, ambas con $\lambda$.</div>` },
 
     { id: 'u2-cartesiana', tipo: 'def', titulo: 'Ecuación cartesiana (simétrica)',
       cuerpo: tex`<p>Si el director $\vec u = (u_1, u_2)$ tiene $u_1 \neq 0$ y $u_2 \neq 0$, se despeja $\lambda$ de las dos [[u2-parametrica|paramétricas]] y se iguala:</p>
       <div class="fx center">$$L: \;\frac{x - x_0}{u_1} = \frac{y - y_0}{u_2}$$</div>
       <div class="note"><b class="lbl">Cuando una componente del director es nula</b>
-      La escritura $\dfrac{x-2}{0} = \dfrac{y+3}{3}$ no tiene sentido algebraico pero sí geométrico: es la recta que pasa por $(2,-3)$ y es paralela a $\vec u = (0,3)$, es decir paralela al eje $Y$. Su ecuación es $x = 2$. Análogamente, director $(a, 0)$ da una recta horizontal $y = y_0$.</div>` },
+      La escritura $\dfrac{x-2}{0} = \dfrac{y+3}{3}$ no tiene sentido algebraico pero sí geométrico: es la recta que pasa por $(2,-3)$ y es paralela a $\vec u = (0,3)$, es decir paralela al eje $Y$. Su ecuación es $x = 2$. Análogamente, director $(a, 0)$ da una recta horizontal $y = y_0$.</div>
+      <div class="note tip"><b class="lbl">Ejemplo</b> De $x = 2 + 3\lambda$ sale $\lambda = \frac{x-2}{3}$; de $y = -1 + 2\lambda$ sale $\lambda = \frac{y+1}{2}$. Igualando: $\;\dfrac{x-2}{3} = \dfrac{y+1}{2}$. Ojo con el signo: $y_0 = -1$ aparece como $y + 1$.</div>` },
 
     { id: 'u2-pendiente', tipo: 'def', titulo: 'Pendiente de una recta',
       cuerpo: tex`<p>Si $\alpha$ es el ángulo que forma el vector director de $L$ con el semieje positivo $X$, entonces $\tan \alpha$ es la <strong>pendiente</strong> de $L$ y se nota $m$:</p>
       <div class="fx center">$$m = \tan\alpha = \frac{u_2}{u_1} \qquad (u_1 \neq 0)$$</div>
       <p>Y si se conocen dos puntos $P=(x_1,y_1)$, $Q=(x_2,y_2)$ de la recta, su director es $\overrightarrow{PQ} = Q - P$, de donde</p>
       <div class="fx center">$$m = \frac{y_2 - y_1}{x_2 - x_1}$$</div>
-      <p>Las rectas verticales no tienen pendiente definida ($u_1 = 0$).</p>` },
+      <p>Las rectas verticales no tienen pendiente definida ($u_1 = 0$).</p>
+      <div class="note tip"><b class="lbl">Ejemplo</b> Con director $(3,2)$: $m = \frac{2}{3}$. Es la misma fórmula «$\frac{y_1-y_0}{x_1-x_0}$» de Análisis: el numerador y el denominador son justamente las componentes del director $Q - P$.</div>` },
 
     { id: 'u2-punto-pendiente', tipo: 'form', titulo: 'Ecuación punto-pendiente y explícita',
       cuerpo: tex`<p><strong>Punto-pendiente:</strong> recta de pendiente $m$ que pasa por $P_0=(x_0,y_0)$:</p>
       <div class="fx center">$$y - y_0 = m\,(x - x_0)$$</div>
       <p><strong>Explícita:</strong> distribuyendo y despejando $y$,</p>
       <div class="fx center">$$y = m\,x + h$$</div>
-      <p>donde $h$ es la <strong>ordenada al origen</strong> (el valor de $y$ cuando $x=0$, o sea el punto $(0,h)$).</p>` },
+      <p>donde $h$ es la <strong>ordenada al origen</strong> (el valor de $y$ cuando $x=0$, o sea el punto $(0,h)$).</p>
+      <p>Es la «función lineal» $f(x) = mx + h$ de Análisis: de las seis formas, es la única que mira la recta como función.</p>
+      <div class="note tip"><b class="lbl">Ejemplo</b> Punto-pendiente con $P_0 = (2,-1)$ y $m = \frac23$: $\;y + 1 = \frac{2}{3}(x - 2)$. Despejando, $\;y = \frac{2}{3}x - \frac{7}{3}$, con $h = -\frac73$. Control: $x = 2$ da $\frac43 - \frac73 = -1$ ✓.</div>` },
 
     { id: 'u2-implicita', tipo: 'def', titulo: 'Ecuación implícita (general) y vector normal',
       cuerpo: tex`<p>Operando sobre la [[u2-cartesiana|cartesiana]] se llega a la forma</p>
@@ -49,13 +56,15 @@ EAL.unidad({
       <p>Si el director es $\vec u = (u_1, u_2)$, resulta $\vec u = (-b, a)$; por lo tanto</p>
       <div class="fx center">$$\vec n = (a, b) \;\text{ es un vector } \textbf{normal} \text{ (perpendicular) a } L$$</div>
       <div class="note tip"><b class="lbl">La idea más rentable de la unidad</b>
-      Los coeficientes de $x$ e $y$ en la ecuación implícita <strong>son</strong> las componentes de un vector normal a la recta. Y si $\vec n = (a,b)$ es normal, entonces $\vec u = (-b, a)$ es director (son perpendiculares por [[u1-teorema-3]]). Pasar de normal a director es «dar vuelta y cambiar un signo». Con eso se resuelven casi todos los ítems de paralelas y perpendiculares.</div>` },
+      Los coeficientes de $x$ e $y$ en la ecuación implícita <strong>son</strong> las componentes de un vector normal a la recta. Y si $\vec n = (a,b)$ es normal, entonces $\vec u = (-b, a)$ es director (son perpendiculares por [[u1-teorema-3]]). Pasar de normal a director es «dar vuelta y cambiar un signo». Con eso se resuelven casi todos los ítems de paralelas y perpendiculares.</div>
+      <div class="note"><b class="lbl">Ejemplo</b> De $\frac{x-2}{3} = \frac{y+1}{2}$, multiplicando en cruz: $2(x-2) = 3(y+1) \Rightarrow 2x - 4 = 3y + 3 \Rightarrow 2x - 3y - 7 = 0$. Normal $\vec n = (2,-3)$; director $(-b, a) = (3, 2)$ ✓, el mismo con el que se empezó.</div>` },
 
     { id: 'u2-segmentaria', tipo: 'form', titulo: 'Ecuación segmentaria',
       cuerpo: tex`<p>Si en la [[u2-implicita|implícita]] $a$, $b$ y $c$ son todos no nulos, se puede escribir</p>
       <div class="fx center">$$L: \;\frac{x}{p} + \frac{y}{q} = 1, \qquad p = -\frac{c}{a}, \quad q = -\frac{c}{b}$$</div>
       <p>donde $p$ es la <strong>abscisa al origen</strong> (corte con el eje $X$, punto $(p,0)$) y $q$ la <strong>ordenada al origen</strong> (corte con el eje $Y$, punto $(0,q)$).</p>
-      <div class="note tip"><b class="lbl">Uso directo</b> «Hallar la recta con ordenada al origen $-3$ y abscisa al origen $5$» se resuelve de una: $\dfrac{x}{5} + \dfrac{y}{-3} = 1$, y después se lleva a implícita si hace falta.</div>` },
+      <div class="note tip"><b class="lbl">Uso directo</b> «Hallar la recta con ordenada al origen $-3$ y abscisa al origen $5$» se resuelve de una: $\dfrac{x}{5} + \dfrac{y}{-3} = 1$, y después se lleva a implícita si hace falta.</div>
+      <div class="note"><b class="lbl">Ejemplo</b> De $2x - 3y - 7 = 0$: $\;2x - 3y = 7$, y dividiendo por $7$, $\;\frac{2x}{7} - \frac{3y}{7} = 1$, o sea $\;\dfrac{x}{7/2} + \dfrac{y}{-7/3} = 1$. Corta al eje $X$ en $(\frac72, 0)$ y al eje $Y$ en $(0, -\frac73)$ — la misma $h$ de la explícita.</div>` },
 
     { id: 'u2-pasaje', tipo: 'met', titulo: 'Método — cómo pasar de una forma a otra',
       cuerpo: tex`<p>Los enunciados que piden «escribirla en todas las formas» siguen siempre este circuito:</p>

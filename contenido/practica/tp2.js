@@ -17,20 +17,115 @@ EAL.tp({
       { id: 'tp2-1a', rot: 'a', enunciado: tex`pasa por $P = (1,2)$ y $Q = (2,3)$. Escribirla en todas las formas.`,
         conceptos: ['u2-pasaje', 'u2-vectorial', 'u2-parametrica', 'u2-cartesiana', 'u2-implicita', 'u2-pendiente', 'u2-segmentaria'],
         pista: tex`Con dos puntos, el director sale de [[u1-componentes-pq]]: $\vec u = Q - P$. Desde ahí se recorre el circuito de [[u2-pasaje]] sin volver a pensar.`,
-        resolucion: tex`<ol class="pasos">
-          <li><span class="ptit">Punto y director.</span> Tomamos $P = (1,2)$ y $\vec u = Q - P = (2-1,\; 3-2) = (1,1)$.</li>
-          <li><span class="ptit">Vectorial.</span> $\;(x,y) = (1,2) + \lambda\,(1,1)$, $\lambda \in \mathbb{R}$.</li>
-          <li><span class="ptit">Paramétricas.</span> $\;x = 1 + \lambda$, $\;y = 2 + \lambda$.</li>
-          <li><span class="ptit">Cartesiana.</span> Despejando $\lambda$ de ambas e igualando:
-            $$\frac{x-1}{1} = \frac{y-2}{1}$$</li>
-          <li><span class="ptit">Implícita.</span> $x - 1 = y - 2 \Rightarrow \;\boxed{x - y + 1 = 0}$. De acá se lee el normal $\vec n = (1,-1)$.</li>
-          <li><span class="ptit">Pendiente y explícita.</span> $m = \dfrac{u_2}{u_1} = \dfrac{1}{1} = 1$, y despejando $y$:
-            $$y = x + 1 \qquad (m = 1,\; \text{ordenada al origen } h = 1)$$</li>
-          <li><span class="ptit">Segmentaria.</span> De $x - y = -1$, dividiendo todo por $-1$:
-            $$\frac{x}{-1} + \frac{y}{1} = 1$$
-            es decir abscisa al origen $p = -1$ y ordenada al origen $q = 1$.</li>
+        resolucion: tex`<p><strong>Punto de partida: la función lineal.</strong> Si venís de Análisis, este ejercicio ya lo sabés resolver así:</p>
+        <ol class="pasos">
+          <li><span class="ptit">Pendiente.</span> $\;m = \dfrac{y_1 - y_0}{x_1 - x_0} = \dfrac{3 - 2}{2 - 1} = \dfrac{1}{1} = 1$.</li>
+          <li><span class="ptit">Ordenada al origen.</span> $f(x) = 1 \cdot x + h$ tiene que pasar por $P = (1,2)$, o sea $f(1) = 2$: $\;1 \cdot 1 + h = 2 \Rightarrow h = 1$.</li>
+          <li><span class="ptit">Resultado.</span> $\;f(x) = x + 1$, o sea $\boxed{y = x + 1}$.</li>
         </ol>
-        <p><strong>Verificación.</strong> $Q = (2,3)$ en la implícita: $2 - 3 + 1 = 0$ ✓. Y $\lambda = 1$ en las paramétricas da $(2,3)$ ✓.</p>`,
+        <p>Está <strong>bien</strong>, y es una de las respuestas: la llamada <strong>ecuación explícita</strong> $y = mx + h$ ([[u2-punto-pendiente]]). Lo que pasa es que el enunciado pide «todas las formas», y en Álgebra la recta se mira desde otro lugar.</p>
+
+        <div class="note"><b class="lbl">El cambio de mirada</b>
+        En Análisis, $y = x + 1$ es una <em>función</em>: entra un $x$, sale un $y$. En Álgebra, la recta es un <strong>conjunto de puntos del plano</strong>, y ese mismo conjunto se puede describir de seis maneras distintas. No son seis rectas: es <strong>la misma recta</strong> escrita en seis «idiomas», y cada uno deja ver a simple vista un dato distinto. ¿Por qué no alcanza con $y = mx + h$? Porque no sirve para todo: la recta vertical $x = 3$ no es una función y no tiene pendiente, y en el espacio (TP 3) una recta <strong>no tiene</strong> ecuación $y = mx+h$. La forma vectorial, en cambio, funciona siempre, en $\mathbb{R}^2$ y en $\mathbb{R}^3$.</div>
+
+        <p><strong>El puente entre tu cuenta y los vectores.</strong> Mirá el numerador y el denominador de tu fórmula de la pendiente: son las restas $x_1 - x_0 = 1$ e $y_1 - y_0 = 1$. Esas dos restas juntas forman el vector</p>
+        <div class="fx center">$$\vec u = Q - P = (2-1,\; 3-2) = (1, 1)$$</div>
+        <p>que es la flecha que va de $P$ a $Q$ ([[u1-componentes-pq]]). Se llama <strong>vector director</strong>: indica hacia dónde «apunta» la recta. Tu pendiente es simplemente el cociente de sus componentes, $m = \dfrac{u_2}{u_1} = \dfrac{1}{1}$. O sea: <em>vos ya calculaste el director sin saberlo</em>; Álgebra se queda con las dos restas por separado en vez de dividirlas.</p>
+
+        <p><strong>Las seis formas de un vistazo.</strong> La columna «cómo reconocerla» es para que, cuando veas una ecuación suelta, sepas en qué forma está:</p>
+        <div class="tbl"><table>
+          <thead><tr><th>Forma</th><th>Aspecto general</th><th>Cómo reconocerla</th><th>Qué se lee directo</th><th>En este ejercicio</th></tr></thead>
+          <tbody>
+            <tr><td>Vectorial</td><td>$(x,y) = (x_0,y_0) + \lambda\,(u_1,u_2)$</td><td>pares ordenados y la letra $\lambda$</td><td>un punto y el director</td><td>$(x,y) = (1,2) + \lambda(1,1)$</td></tr>
+            <tr><td>Paramétricas</td><td>$x = x_0 + \lambda u_1$<br>$y = y_0 + \lambda u_2$</td><td>dos ecuaciones, una para $x$ y otra para $y$, ambas con $\lambda$</td><td>un punto y el director</td><td>$x = 1+\lambda$<br>$y = 2+\lambda$</td></tr>
+            <tr><td>Cartesiana (simétrica)</td><td>$\dfrac{x-x_0}{u_1} = \dfrac{y-y_0}{u_2}$</td><td>dos fracciones igualadas, sin $\lambda$</td><td>un punto (cambiado de signo) y el director (abajo)</td><td>$\dfrac{x-1}{1} = \dfrac{y-2}{1}$</td></tr>
+            <tr><td>Implícita (general)</td><td>$ax + by + c = 0$</td><td>todo de un lado, igualado a <strong>cero</strong></td><td>el <strong>normal</strong> $(a,b)$</td><td>$x - y + 1 = 0$</td></tr>
+            <tr><td>Explícita</td><td>$y = mx + h$</td><td>$y$ despejada sola</td><td>pendiente y ordenada al origen</td><td>$y = x + 1$</td></tr>
+            <tr><td>Segmentaria</td><td>$\dfrac{x}{p} + \dfrac{y}{q} = 1$</td><td>$x$ e $y$ divididas, igualado a <strong>uno</strong></td><td>dónde corta a cada eje</td><td>$\dfrac{x}{-1} + \dfrac{y}{1} = 1$</td></tr>
+          </tbody>
+        </table></div>
+
+        <p><strong>Qué es $\lambda$ y de dónde sale.</strong> La letra es <strong>lambda</strong> ($\lambda$), la «l» griega; no es delta ($\delta$ o $\Delta$). En este tema $\Delta$ aparece sólo como discriminante de una cuadrática ($\Delta = b^2 - 4ac$), y no tiene nada que ver. $\lambda$ es un <strong>parámetro</strong>: un número real que puede tomar cualquier valor, y cada valor que le das produce un punto de la recta.</p>
+        <p>Sale de esta idea: parado en $P$, a cualquier otro punto $X = (x,y)$ de la recta se llega caminando en la dirección de $\vec u$, hacia adelante o hacia atrás. Entonces la flecha $\overrightarrow{PX}$ es paralela a $\vec u$, y dos vectores paralelos son múltiplos uno del otro ([[u1-teorema-1]]): existe un número $\lambda$ con</p>
+        <div class="fx center">$$\overrightarrow{PX} = \lambda\,\vec u \;\Longrightarrow\; X - P = \lambda\,\vec u \;\Longrightarrow\; X = P + \lambda\,\vec u$$</div>
+        <p>Eso es la ecuación vectorial. $\lambda$ cuenta <strong>cuántas veces $\vec u$ hay que caminar</strong> desde $P$: $\lambda = 2$ es dar dos pasos de $\vec u$, $\lambda = \tfrac12$ medio paso, $\lambda = -1$ un paso para atrás. Si te ayuda, pensalo como un <em>tiempo</em>: salís de $P$ con velocidad $\vec u$ y en el instante $\lambda$ estás en $P + \lambda\vec u$.</p>
+        <div class="tbl"><table>
+          <thead><tr><th>$\lambda$</th><th>$P + \lambda\,\vec u = (1,2) + \lambda(1,1)$</th><th>Punto</th></tr></thead>
+          <tbody>
+            <tr><td>$-2$</td><td>$(1-2,\; 2-2)$</td><td>$(-1, 0)$ — corte con el eje $X$</td></tr>
+            <tr><td>$-1$</td><td>$(1-1,\; 2-1)$</td><td>$(0, 1)$ — corte con el eje $Y$</td></tr>
+            <tr><td>$0$</td><td>$(1,\; 2)$</td><td>$(1, 2) = P$</td></tr>
+            <tr><td>$\tfrac12$</td><td>$(1+\tfrac12,\; 2+\tfrac12)$</td><td>$(1{,}5;\; 2{,}5)$ — punto medio de $PQ$</td></tr>
+            <tr><td>$1$</td><td>$(1+1,\; 2+1)$</td><td>$(2, 3) = Q$</td></tr>
+            <tr><td>$2$</td><td>$(1+2,\; 2+2)$</td><td>$(3, 4)$</td></tr>
+          </tbody>
+        </table></div>
+        <figure class="fig">
+        <svg viewBox="0 0 460 400" role="img" aria-label="La recta y igual a x más 1 con los puntos que da lambda igual a menos 2, menos 1, 0, un medio, 1 y 2; el vector director u va de P a Q y de Q al punto con lambda 2">
+          <line class="edge" x1="20" y1="320" x2="445" y2="320"/>
+          <line class="edge" x1="150" y1="390" x2="150" y2="25"/>
+          <path class="edge" d="M100,316 v8 M200,316 v8 M250,316 v8 M300,316 v8 M350,316 v8 M146,270 h8 M146,220 h8 M146,170 h8 M146,120 h8 M146,70 h8"/>
+          <text class="sm" x="436" y="340">x</text>
+          <text class="sm" x="158" y="34">y</text>
+          <text class="sm" x="134" y="338">O</text>
+          <line class="edge" style="stroke-width:1.8" x1="40" y1="380" x2="370" y2="50"/>
+          <line class="c-teo" x1="150" y1="320" x2="196.0" y2="228.0"/><polygon class="c-teo" points="200,220 199.1,231.8 191.1,227.8"/>
+          <line class="c-def" x1="200" y1="220" x2="243.6" y2="176.4"/><polygon class="c-def" points="250,170 245.4,181.0 239.0,174.6"/>
+          <line class="c-def" x1="250" y1="170" x2="293.6" y2="126.4"/><polygon class="c-def" points="300,120 295.4,131.0 289.0,124.6"/>
+          <circle class="c-ink" cx="100" cy="320" r="4"/>
+          <circle class="c-ink" cx="150" cy="270" r="4"/>
+          <circle class="c-ink" cx="200" cy="220" r="4"/>
+          <circle class="c-ink" cx="225" cy="195" r="3.2"/>
+          <circle class="c-ink" cx="250" cy="170" r="4"/>
+          <circle class="c-ink" cx="300" cy="120" r="4"/>
+          <text x="90" y="310" text-anchor="end">λ = −2</text>
+          <text x="140" y="262" text-anchor="end">λ = −1</text>
+          <text x="212" y="238">λ = 0 <tspan class="sm" dx="4">(P)</tspan></text>
+          <text x="215" y="187" text-anchor="end">λ = ½</text>
+          <text x="262" y="188">λ = 1 <tspan class="sm" dx="4">(Q)</tspan></text>
+          <text x="312" y="138">λ = 2</text>
+          <text class="c-def" x="236" y="214">u</text>
+          <text class="c-def" x="286" y="164">u</text>
+          <text class="c-teo" x="176" y="294">P</text>
+        </svg>
+        <figcaption>La recta $y = x + 1$. Desde $P$ (flecha azul, del origen a $P$) se camina con el director $\vec u = (1,1)$ (verde): un paso de $\vec u$ lleva a $Q$ ($\lambda = 1$), dos pasos a $(3,4)$ ($\lambda = 2$), y con $\lambda$ negativo se va para atrás. Cada valor de $\lambda$ es un punto; todos los $\lambda \in \mathbb{R}$ juntos son la recta entera. Las marcas de los ejes van de a una unidad.</figcaption>
+        </figure>
+        <div class="note tip"><b class="lbl">Para qué sirve $\lambda$: saber si un punto está en la recta</b>
+        Un punto está en la recta si existe <strong>un mismo</strong> $\lambda$ que lo produce. ¿Está $(3,5)$? De $x$: $3 = 1 + \lambda \Rightarrow \lambda = 2$. De $y$: $5 = 2 + \lambda \Rightarrow \lambda = 3$. La coordenada $x$ pide dos pasos y la $y$ pide tres: no hay un $\lambda$ que sirva para las dos, así que $(3,5)$ <strong>no</strong> está. En cambio $(3,4)$ pide $\lambda = 2$ en ambas ✓.</div>
+
+        <p><strong>Ahora sí, todas las formas paso a paso.</strong></p>
+        <ol class="pasos">
+          <li><span class="ptit">Punto y director.</span> Tomamos $P = (1,2)$ y $\vec u = Q - P = (1,1)$. Es lo único que hay que «pensar»; todo lo demás es reescribir.</li>
+          <li><span class="ptit">Vectorial</span> ([[u2-vectorial]]): punto $+\;\lambda\,\cdot$ director.
+            $$(x,y) = (1,2) + \lambda\,(1,1), \qquad \lambda \in \mathbb{R}$$</li>
+          <li><span class="ptit">Paramétricas</span> ([[u2-parametrica]]): es la misma ecuación leída coordenada por coordenada. Haciendo la cuenta del lado derecho, $(1,2) + \lambda(1,1) = (1 + \lambda,\; 2 + \lambda)$, y dos pares son iguales cuando coinciden sus componentes:
+            $$\begin{cases} x = 1 + \lambda \\ y = 2 + \lambda \end{cases} \qquad \lambda \in \mathbb{R}$$</li>
+          <li><span class="ptit">Cartesiana</span> ([[u2-cartesiana]]): se <strong>elimina</strong> $\lambda$. De la primera, $\lambda = \dfrac{x-1}{1}$; de la segunda, $\lambda = \dfrac{y-2}{1}$. Como tiene que ser el mismo $\lambda$ (justo lo del recuadro de arriba), se igualan:
+            $$\frac{x-1}{1} = \frac{y-2}{1}$$
+            Los denominadores son el director; los números restando, el punto. Acá quedan los «$/1$» a la vista porque son parte de la forma, aunque no cambien nada.</li>
+          <li><span class="ptit">Implícita</span> ([[u2-implicita]]): se pasan los denominadores multiplicando y todo a un lado:
+            $$x - 1 = y - 2 \;\Longrightarrow\; \boxed{x - y + 1 = 0}$$
+            Los coeficientes de $x$ e $y$ forman el <strong>normal</strong> $\vec n = (1,-1)$, perpendicular a la recta: $(1,-1)\cdot(1,1) = 1 - 1 = 0$ ✓.</li>
+          <li><span class="ptit">Explícita</span> ([[u2-punto-pendiente]]) — <strong>acá aparece tu función lineal</strong>. Despejando $y$ de la implícita:
+            $$y = x + 1 \qquad (m = 1,\; h = 1)$$
+            Es exactamente tu $f(x) = 1\cdot x + 1$. Y la pendiente coincide con la que sale del director, $m = \dfrac{u_2}{u_1} = \dfrac11 = 1$ ([[u2-pendiente]]).</li>
+          <li><span class="ptit">Segmentaria</span> ([[u2-segmentaria]]): se deja el número solo a la derecha y se divide para que quede $1$. De $x - y + 1 = 0$ sale $x - y = -1$; dividiendo todo por $-1$: $\;-x + y = 1$. Y como $-x = \dfrac{x}{-1}$:
+            $$\frac{x}{-1} + \frac{y}{1} = 1$$
+            Los denominadores son los cortes con los ejes: con el $X$ en $(-1, 0)$ y con el $Y$ en $(0, 1)$. Son los puntos de $\lambda = -2$ y $\lambda = -1$ de la tabla.</li>
+        </ol>
+
+        <p><strong>Verificación: el mismo punto cumple las seis.</strong> Tomando $(3,4)$, que es $\lambda = 2$:</p>
+        <ul>
+          <li>vectorial y paramétricas: $(1,2) + 2(1,1) = (3,4)$ ✓;</li>
+          <li>cartesiana: $\dfrac{3-1}{1} = 2$ y $\dfrac{4-2}{1} = 2$ ✓;</li>
+          <li>implícita: $3 - 4 + 1 = 0$ ✓;</li>
+          <li>explícita: $1 \cdot 3 + 1 = 4$ ✓;</li>
+          <li>segmentaria: $\dfrac{3}{-1} + \dfrac{4}{1} = -3 + 4 = 1$ ✓.</li>
+        </ul>
+        <p>Que un mismo punto las cumpla todas es la prueba de que son la misma recta escrita de formas distintas.</p>
+
+        <div class="note warn"><b class="lbl">Lo que se confunde</b>
+        <strong>(1)</strong> En la implícita, $(a,b) = (1,-1)$ es el <strong>normal</strong>, no el director; el director es $(-b, a) = (1,1)$. <strong>(2)</strong> Las formas con $\lambda$ y la cartesiana <strong>no son únicas</strong>: con $Q$ como punto y $(2,2)$ como director, $(x,y) = (2,3) + \lambda(2,2)$ es la misma recta, sólo que ahora $\lambda = 0$ cae en $Q$ y cada paso es el doble de largo. La explícita y la segmentaria, en cambio, sí son únicas, y por eso sirven para comparar resultados con los de un compañero. <strong>(3)</strong> La segmentaria va igualada a $1$, no a $-1$: si te queda $\dfrac{x}{1} - y = -1$, falta dividir por $-1$.</div>`,
         resultado: tex`$x - y + 1 = 0$; $\;(x,y) = (1,2)+\lambda(1,1)$; $\;\frac{x-1}{1} = \frac{y-2}{1}$; $\;y = x+1$; $\;\frac{x}{-1} + \frac{y}{1} = 1$.` },
 
       { id: 'tp2-1b', rot: 'b', enunciado: tex`es paralela a la recta $3x - 2y + 1 = 0$ y pasa por el punto $P = (3,1)$.`,
